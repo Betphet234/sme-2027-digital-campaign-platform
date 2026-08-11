@@ -1,0 +1,12 @@
+ADMIN PUBLIC LINK FIX
+
+This package removes Admin from every visible website header, including Donate, Needs Portal, News, Events, Thank You, and all other public pages.
+
+Admin access still exists directly at:
+/admin.html
+
+Important upload step:
+Before uploading this package, delete the old site files on the server or overwrite every file in the public htdocs folder. If old files remain on the server, some pages may still show the previous Admin link.
+
+Cache note:
+CSS and JavaScript file references were updated with ?v=6 so Android browsers load the fresh files instead of cached copies.

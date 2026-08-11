@@ -1,0 +1,1 @@
+Status and Search appear as ordinary mobile menu items after Home, matching Home, Meet SME and Agenda. Old quick buttons removed. Cache version updated to v10.

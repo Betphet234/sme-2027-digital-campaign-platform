@@ -1,0 +1,35 @@
+SME 2027 UPDATED FRONTEND - UPLOAD INSTRUCTIONS
+
+What I changed
+--------------
+1. Replaced the homepage with the new modern frontend direction based on your pasted design.
+2. Removed Lovable preview badge/tracking dependencies by creating a normal deployable HTML/CSS/JS version.
+3. Added a complete assets folder with CSS and JS required by the pages.
+4. Added missing pages referenced by navigation: record-of-service.html, support-campaign.html, volunteer.html, terms.html.
+5. Kept the forms as browser/localStorage prototype forms so the frontend works on InfinityFree without Node.js.
+
+How to upload on InfinityFree
+-----------------------------
+1. Log into InfinityFree File Manager or FTP.
+2. Open the htdocs folder.
+3. BACK UP your current htdocs files first.
+4. Upload everything inside this folder into htdocs.
+5. Replace the placeholder images in assets/images/ with your real official images:
+   - candidate-sme.jpg
+   - party-logo-ndc.jpg
+6. Open your website in a private/incognito browser window and test these pages:
+   - index.html
+   - opportunities.html
+   - community-needs.html
+   - contact.html
+   - application-status.html
+   - admin.html
+
+Important production note
+-------------------------
+This package is a frontend/static version. Form records are stored in the visitor browser using localStorage. For real public campaign data, connect forms to a PHP/MySQL backend, secure uploads, admin authentication, CAPTCHA, SSL, backups and email/SMS notifications.
+
+Demo admin login for frontend prototype only:
+Username: superadmin
+Password: SME2027!
+Do not treat this as real production security.

@@ -1,0 +1,9 @@
+Mobile Status/Search fix
+
+This package adds a visible mobile quick strip under the header with:
+- Check Status
+- Search Site
+
+It also highlights Status and Search inside the dropdown menu, cache-busts CSS/JS to v=7, and includes the updated constituency-aerial.jpg if supplied.
+
+Upload the contents of this package directly into htdocs and overwrite existing files.

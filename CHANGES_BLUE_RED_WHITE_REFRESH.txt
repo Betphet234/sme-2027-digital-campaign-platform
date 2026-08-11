@@ -1,0 +1,14 @@
+SME 2027 blue/red/white website refresh
+
+Changes made:
+- Updated the main design system to blue, red and white.
+- Refreshed the homepage hero, buttons, cards, forms, footer, page headers and mobile menu styling.
+- Improved mobile usability for ordinary Android phones with larger tap targets, clearer spacing and scrollable mobile navigation.
+- Changed browser theme colour to blue across HTML pages.
+- Removed the public Admin navigation link from public pages.
+- Removed admin.js from public pages; it now remains only on admin.html.
+- Added noindex/nofollow to admin.html.
+- Removed the accidental nested htdocs/htdocs duplicate folder from the package.
+
+Deployment:
+Upload the contents of the htdocs folder to the hosting htdocs/public_html area. Keep backend/config.php secure and do not share admin credentials.

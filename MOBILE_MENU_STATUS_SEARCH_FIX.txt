@@ -1,0 +1,1 @@
+Status and Search are now placed and highlighted inside the mobile dropdown menu. The separate mobile quick strip was removed. Cache version updated to v=8.

@@ -1,0 +1,1 @@
+Official images have been added. Party logo: assets/images/party-logo-ndc.jpg. Candidate image: assets/images/candidate-sme.jpg. The HTML pages now use these files, and the Android/mobile CSS has been improved for a cleaner campaign-app style view.

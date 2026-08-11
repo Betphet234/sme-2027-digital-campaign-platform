@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon.png">
+<link rel="apple-touch-icon" href="/assets/images/favicon.png">
+<title>Admin Dashboard | SME 2027</title>
+<meta content="noindex, nofollow" name="robots"/>
+<meta content="#073B8E" name="theme-color"/>
+<link href="assets/css/style.css?v=10" rel="stylesheet"/>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="top-bar"><div class="wrap"><span>Service · Fairness · Security · Prosperity</span><span><a href="tel:+2348151904444, +2348055018888">08055018888</a> · <a href="mailto:campaign@sme2027edha.com">campaign@sme2027edha.com</a></span></div></div>
+<header class="site-header">
+<div class="header-inner">
+<a aria-label="SME for Esan Central home" class="brand" href="index.html">
+<img alt="NDC logo" src="assets/images/party-logo-ndc.jpg"/>
+<strong>SME 2027<span>Esan Central Constituency</span></strong>
+</a>
+<button aria-controls="siteNav" aria-expanded="false" aria-label="Open navigation" class="nav-toggle" type="button">Menu</button>
+<nav aria-label="Main navigation" class="site-nav" id="siteNav">
+<a href="index.html">Home</a>
+<a href="meet-sme.html">Meet SME</a>
+<a href="biography.html">Biography</a>
+<a href="agenda.html">Agenda</a>
+<a href="communities.html">Communities</a>
+<a href="opportunities.html">Opportunities</a>
+<a href="community-needs.html">Needs Portal</a>
+<a href="news-media.html">News</a>
+<a href="events.html">Events</a>
+<a href="join-campaign.html">Join</a>
+<a href="donate.html">Donate</a>
+<a href="contact.html">Contact</a>
+<a href="application-status.html">Status</a>
+<button class="search-button" data-open-search="" type="button">Search</button>
+<a class="btn mobile-cta" href="opportunities.html">Register</a>
+</nav>
+</div>
+</header>
+<main id="main">
+<section class="section dashboard" id="dashboardApp">
+<div class="admin-login" id="adminLogin">
+<h2>Administrator login</h2><p>Use the administrator account created during backend setup.</p>
+<label>Email or username<input autocomplete="username" id="adminUser"/></label><label>Password<input autocomplete="current-password" id="adminPass" type="password"/></label><button class="btn" id="adminLoginBtn">Enter Dashboard</button>
+</div>
+<div class="admin-panel hidden" id="adminPanel">
+<div class="admin-session-bar">
+<strong id="userRoleBadge"></strong>
+<span>Role-based dashboard access is active.</span>
+</div>
+<div class="stats-grid" id="statsGrid"></div>
+<div id="recordsSection">
+<h2>Applications, volunteers and community records</h2>
+<div class="admin-controls">
+<select id="datasetSelect">
+<option value="applications">Applications</option>
+<option value="needs">Community Needs / Complaints</option>
+<option value="volunteers">Volunteers</option>
+<option value="supporters">Supporters</option>
+<option value="messages">Messages</option>
+<option value="donors">Donor Pledges</option>
+</select>
+<input id="adminSearch" placeholder="Search name, phone, community, ward, skills..." type="search"/>
+<select id="statusFilter"><option value="">All statuses</option><option>Application Received</option><option>Received</option><option>Under Review</option><option>Additional Information Required</option><option>Shortlisted</option><option>Verification Stage</option><option>Referred to Partner</option><option>Approved</option><option>Not Selected</option><option>Closed</option></select>
+<button class="btn btn-secondary" id="exportCsv" type="button">Download CSV</button>
+<button class="btn btn-secondary" id="exportExcel" type="button">Download Excel</button>
+</div>
+<div class="admin-table-wrap"><table class="admin-table" id="adminTable"><thead></thead><tbody></tbody></table></div>
+</div>
+<div class="content-admin hidden" id="contentSection">
+<h2>News, Media and Events Upload</h2>
+<p>Publish news reports, press statements, speeches, articles, community visits, endorsements, photographs, videos, interviews, campaign materials and campaign events.</p>
+<form class="admin-content-form" enctype="multipart/form-data" id="contentForm">
+<input id="contentId" name="id" type="hidden"/>
+<input id="existingFeaturedImage" name="existing_featured_image" type="hidden"/>
+<label>Title<input id="contentTitle" maxlength="255" name="title" required=""/></label>
+<label>Content Type
+          <select id="contentType" name="type">
+<option value="news">News Report</option>
+<option value="press_statement">Press Statement</option>
+<option value="speech">Speech</option>
+<option value="article">Article</option>
+<option value="community_visit">Community Visit</option>
+<option value="endorsement">Endorsement</option>
+<option value="photograph">Photograph</option>
+<option value="video">Video</option>
+<option value="interview">Interview</option>
+<option value="campaign_material">Campaign Material</option>
+<option value="event">Campaign Event / Calendar</option>
+</select>
+</label>
+<div class="event-fields hidden" id="eventFields">
+<label>Event Date<input id="contentEventDate" name="event_date" type="date"/></label>
+<label>Event Time<input id="contentEventTime" name="event_time" type="time"/></label>
+<label>Event Venue / Location<input id="contentEventLocation" maxlength="255" name="event_location" placeholder="Example: Irrua Town Hall, Ward 2"/></label>
+</div>
+<label>Short Excerpt<textarea id="contentExcerpt" name="excerpt" placeholder="Short summary for the news page or event calendar" rows="2"></textarea></label>
+<label>Full Body<textarea id="contentBody" name="body" placeholder="Write the full article, statement or media description" rows="8"></textarea></label>
+<label>Featured Image<input accept="image/*" id="contentFeaturedImage" name="featured_image" type="file"/></label>
+<label>Media Files<input accept="image/*,video/*,application/pdf,.doc,.docx" id="contentMediaFiles" multiple="" name="media_files[]" type="file"/></label>
+<label class="checkbox-line"><input id="contentPublished" name="is_published" type="checkbox" value="1"/> Publish now</label>
+<div class="form-actions">
+<button class="btn" id="contentSaveBtn" type="submit">Publish / Save Content</button>
+<button class="btn btn-secondary" id="contentResetBtn" type="button">Clear Form</button>
+</div>
+</form>
+<div class="admin-table-wrap"><table class="admin-table" id="contentTable"><thead></thead><tbody></tbody></table></div>
+</div>
+</div>
+</section>
+</main>
+<footer class="footer" id="contact-footer">
+<div class="footer-inner">
+<div>
+<div class="footer-brand"><span>SME</span><strong>Saintmoses Eromosele · 2027</strong></div>
+<p>Official campaign information centre, digital constituency office, community listening platform and volunteer mobilisation centre for Esan Central.</p>
+<form class="newsletter-form smart-form" data-store="supporters" data-type="newsletter" id="newsletterForm"><label>Newsletter subscription<input name="Email" placeholder="Your email address" required="" type="email"/></label><button class="btn" type="submit">Subscribe</button></form>
+</div>
+<div><h3>Explore</h3><ul><li><a href="agenda.html">Agenda</a></li><li><a href="communities.html">Communities</a></li><li><a href="opportunities.html">Opportunities</a></li><li><a href="community-needs.html">Needs Portal</a></li><li><a href="join-campaign.html">Join the Campaign</a></li></ul></div>
+<div><h3>Contact</h3><ul><li><a href="tel:+2348151904444, +2348055018888">0807 943 6049</a></li><li><a href="tel:+2348151904444">0815 190 4444</a></li><li><a href="mailto:talktosme@gmail.com">campaign@sme2027edha.com</a></li><li><a href="https://wa.me/2348151904444">WhatsApp</a></li></ul></div>
+</div>
+<div class="footer-bottom">© <span data-year=""></span> SME for Esan Central. All rights reserved. <span>Paid for by the SME 2027 Campaign Organization.</span></div>
+</footer>
+<a aria-label="Chat on WhatsApp" class="whatsapp-float" href="https://wa.me/2348079436049">WhatsApp SME</a>
+<div aria-label="Website search" aria-modal="true" class="search-overlay" id="searchOverlay" role="dialog">
+<div class="search-panel"><header><h2>Search website</h2><button class="btn btn-secondary" id="closeSearch" type="button">Close</button></header><input id="siteSearchInput" placeholder="Search agenda, opportunities, status, volunteer..." type="search"/><div class="search-results" id="siteSearchResults"></div></div>
+</div>
+<script src="assets/js/main.js?v=10"></script>
+<script src="assets/js/forms.js?v=10"></script>
+<script src="assets/js/admin.js?v=6"></script>
+</body>
+</html>

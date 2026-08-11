@@ -1,0 +1,49 @@
+HOW TO LOAD THE BACKEND VERSION
+===============================
+
+This fullstack version cannot work by double-clicking index.html because the backend needs PHP and MySQL.
+
+OPTION A - Put it online with cPanel hosting
+-------------------------------------------
+1. Buy/activate hosting for eromosele.com, sme2027.com or saintmoseseromosele.com.
+2. In cPanel, create a MySQL database.
+3. Create a MySQL database user and give it ALL PRIVILEGES on the database.
+4. Upload all the files from this folder into public_html.
+5. Open backend/config.php and enter the database name, database user and database password.
+6. Change SETUP_KEY in backend/config.php to a private setup key.
+7. Open https://yourdomain.com/setup.php in the browser.
+8. Enter the setup key and create the first admin account.
+9. Delete setup.php immediately after setup.
+10. Open https://yourdomain.com/admin.html and login.
+
+OPTION B - Test on your Windows laptop first
+-------------------------------------------
+1. Install XAMPP or Laragon.
+2. Start Apache and MySQL.
+3. Create a database called sme_campaign.
+4. Put this project folder inside htdocs if using XAMPP.
+5. Edit backend/config.php with your local MySQL user and password.
+6. Visit http://localhost/PROJECT_FOLDER/setup.php.
+7. Create your admin login.
+8. Visit http://localhost/PROJECT_FOLDER/index.html.
+
+WHAT THE BACKEND DOES
+---------------------
+- Stores opportunity applications.
+- Stores community need reports.
+- Stores volunteers, supporters, donor pledges and contact messages.
+- Generates reference numbers.
+- Allows status checking with reference number and phone number.
+- Provides admin login.
+- Allows status updates, internal notes, search, duplicate detection and CSV export.
+
+WHAT STILL NEEDS FINAL PRODUCTION WORK
+--------------------------------------
+- Real campaign logo and photographs.
+- Real domain and hosting.
+- SSL certificate.
+- Real email/SMS sending.
+- CAPTCHA.
+- Two-factor authentication.
+- Legal review of privacy policy and terms.
+- Final security testing.

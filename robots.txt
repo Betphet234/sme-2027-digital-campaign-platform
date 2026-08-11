@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+
+# Private/admin/backend areas should not be indexed
+Disallow: /admin.html
+Disallow: /backend/
+Disallow: /database/
+Disallow: /api/
+Disallow: /uploads/private/
+
+Sitemap: https://sme2027.infinityfree.io/sitemap.xml

@@ -1,0 +1,42 @@
+# Production secrets
+backend/config.php
+backend/payment_sms_config.php
+
+# Environment files
+.env
+.env.*
+!.env.example
+
+# Production user uploads
+uploads/
+
+# Sensitive logs
+error_log
+**/error_log
+*.log
+logs/
+
+# Sensitive/setup files
+setup.php
+test-twilio.php
+
+# Backups and archives
+*.zip
+*.tar
+*.gz
+*backup*
+
+# Database dumps
+*.sql
+!database/schema.sql
+!database/events_calendar_update.sql
+!database/feature_update.sql
+!database/paystack_twilio_update.sql
+
+# Temporary files
+tmp/
+cache/
+
+# OS files
+.DS_Store
+Thumbs.db

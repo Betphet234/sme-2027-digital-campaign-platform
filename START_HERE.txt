@@ -1,0 +1,16 @@
+SME CAMPAIGN WEBSITE - HOW TO OPEN CORRECTLY
+
+The website uses more than one file. Do not open only index.html by itself from Downloads.
+
+Correct steps on Windows:
+1. Download the ZIP file.
+2. Right-click the ZIP file and choose "Extract All".
+3. Open the extracted folder named "sme_campaign_website".
+4. Double-click "index.html" inside that folder.
+
+Important:
+The assets folder must stay beside index.html. It contains the CSS, JavaScript, images and downloads.
+If index.html is copied out by itself, the website will look plain and unstyled.
+
+For online hosting:
+Upload all files and folders exactly as they are to public_html or your web server root.

@@ -1,0 +1,295 @@
+
+(function(){
+  const $=(sel,root=document)=>root.querySelector(sel);
+  const $$=(sel,root=document)=>Array.from(root.querySelectorAll(sel));
+  const nav=$('.site-nav'); const toggle=$('.nav-toggle');
+  if(toggle&&nav){
+    const setOpen=(open)=>{nav.classList.toggle('open', open); toggle.setAttribute('aria-expanded', String(open));};
+    toggle.addEventListener('click',()=>setOpen(!nav.classList.contains('open')));
+    nav.addEventListener('click',e=>{if(e.target.closest('a')) setOpen(false);});
+    document.addEventListener('keydown',e=>{if(e.key==='Escape') setOpen(false);});
+  }
+  $$('[data-year]').forEach(el=>el.textContent=new Date().getFullYear());
+  const overlay=$('#searchOverlay'); const input=$('#siteSearchInput'); const results=$('#siteSearchResults');
+  const pages=[
+    ['Home','index.html','A new direction for Esan Central'],['Meet SME','meet-sme.html','Biography and profile of Saintmoses Eromosele'],['Biography','biography.html','Background, education and authorship'],['Agenda','agenda.html','Security, jobs, education, health and infrastructure'],['Communities','communities.html','Irrua, Ewu, Opoji and Ugbegun'],['Opportunities','opportunities.html','Register for jobs, startup support, expansion or apprentice support'],['Community Needs','community-needs.html','Report roads, water, security, healthcare and community problems'],['News and Media','news-media.html','Campaign updates and media'],['Events','events.html','Campaign event calendar'],['Join Campaign','join-campaign.html','Become a supporter'],['Volunteer','volunteer.html','Volunteer with the campaign'],['Donate','donate.html','Donation pledge information'],['Contact','contact.html','Phone, WhatsApp and email'],['Application Status','application-status.html','Check status by reference number and phone'],['FAQ','faq.html','Frequently asked questions'],['Privacy Policy','privacy-policy.html','Data protection information']
+  ];
+  function doSearch(q){
+    if(!results) return; q=(q||'').toLowerCase().trim();
+    const matches=pages.filter(p=>!q || (p.join(' ').toLowerCase().includes(q))).slice(0,10);
+    results.innerHTML=matches.map(p=>`<a class="search-result" href="${p[1]}"><strong>${p[0]}</strong><span>${p[2]}</span></a>`).join('') || '<p>No result found.</p>';
+  }
+  $$('[data-open-search]').forEach(b=>b.addEventListener('click',()=>{overlay&&overlay.classList.add('open'); input&&input.focus(); doSearch(input&&input.value);}));
+  $('#closeSearch')?.addEventListener('click',()=>overlay&&overlay.classList.remove('open'));
+  overlay?.addEventListener('click',e=>{if(e.target===overlay) overlay.classList.remove('open')});
+  input?.addEventListener('input',()=>doSearch(input.value));
+})();
+document.addEventListener("DOMContentLoaded", function () {
+  const oldTicker = document.querySelector(".floating-media-ticker");
+  if (oldTicker) {
+    oldTicker.remove();
+  }
+
+  const tickerStyles = document.createElement("style");
+  tickerStyles.innerHTML = `
+    .floating-media-ticker {
+      position: sticky;
+      top: 0;
+      z-index: 850;
+      background: rgba(255, 255, 255, 0.98);
+      border-bottom: 1px solid rgba(7, 59, 142, 0.12);
+      box-shadow: 0 8px 18px rgba(4, 31, 74, 0.08);
+      backdrop-filter: blur(8px);
+    }
+
+    .floating-media-ticker-inner {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 8px 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      overflow-x: auto;
+      overflow-y: hidden;
+      white-space: nowrap;
+      scroll-snap-type: x proximity;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .floating-media-ticker-inner::-webkit-scrollbar {
+      height: 3px;
+    }
+
+    .ticker-label {
+      flex: 0 0 auto;
+      display: inline-flex;
+      align-items: center;
+      padding: 7px 11px;
+      border-radius: 999px;
+      background: #041F4A;
+      color: #ffffff;
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .ticker-item {
+      flex: 0 0 auto;
+      scroll-snap-align: start;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      width: auto;
+      max-width: 260px;
+      padding: 6px 11px 6px 6px;
+      border-radius: 999px;
+      background: #ffffff;
+      color: #041F4A;
+      text-decoration: none;
+      border: 1px solid rgba(7, 59, 142, 0.12);
+      box-shadow: 0 5px 14px rgba(10, 25, 41, 0.05);
+    }
+
+    .ticker-item:hover {
+      background: #EAF2FF;
+    }
+
+    .ticker-item img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      object-fit: cover;
+      flex: 0 0 auto;
+      background: #EAF2FF;
+    }
+
+    .ticker-text {
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+      line-height: 1.2;
+    }
+
+    .ticker-title {
+      display: block;
+      max-width: 180px;
+      font-size: 13px;
+      font-weight: 800;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .ticker-type {
+      display: block;
+      font-size: 10px;
+      color: #D71920;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .ticker-loading {
+      font-size: 13px;
+      font-weight: 700;
+      color: #041F4A;
+    }
+
+    @media (max-width: 768px) {
+      .floating-media-ticker {
+        z-index: 820;
+      }
+
+      .floating-media-ticker-inner {
+        padding: 7px 10px;
+        gap: 8px;
+      }
+
+      .ticker-label {
+        font-size: 10px;
+        padding: 6px 9px;
+      }
+
+      .ticker-item {
+        max-width: 215px;
+        padding: 5px 9px 5px 5px;
+        gap: 7px;
+      }
+
+      .ticker-item img {
+        width: 34px;
+        height: 34px;
+      }
+
+      .ticker-title {
+        max-width: 145px;
+        font-size: 12px;
+      }
+
+      .ticker-type {
+        font-size: 9px;
+      }
+    }
+
+    @media (max-width: 420px) {
+      .floating-media-ticker-inner {
+        padding: 6px 8px;
+      }
+
+      .ticker-label {
+        font-size: 9px;
+        padding: 6px 8px;
+      }
+
+      .ticker-item {
+        max-width: 195px;
+      }
+
+      .ticker-item img {
+        width: 32px;
+        height: 32px;
+      }
+
+      .ticker-title {
+        max-width: 128px;
+        font-size: 11px;
+      }
+
+      .ticker-type {
+        font-size: 8.5px;
+      }
+    }
+  `;
+  document.head.appendChild(tickerStyles);
+
+  const ticker = document.createElement("div");
+  ticker.className = "floating-media-ticker";
+  ticker.innerHTML = `
+    <div class="floating-media-ticker-inner">
+      <span class="ticker-label">Latest</span>
+      <span class="ticker-loading">Loading updates...</span>
+    </div>
+  `;
+
+  const siteHeader = document.querySelector(".site-header");
+
+  if (siteHeader) {
+    siteHeader.insertAdjacentElement("afterend", ticker);
+  } else {
+    document.body.prepend(ticker);
+  }
+
+  const tickerInner = ticker.querySelector(".floating-media-ticker-inner");
+
+  fetch("api/content.php")
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (data) {
+      if (!data.success || !Array.isArray(data.posts) || data.posts.length === 0) {
+        ticker.remove();
+        return;
+      }
+
+      const posts = data.posts
+        .filter(function (post) {
+          return post && post.title;
+        })
+        .sort(function (a, b) {
+          return new Date(b.published_at || b.created_at || 0) - new Date(a.published_at || a.created_at || 0);
+        })
+        .slice(0, 8);
+
+      if (posts.length === 0) {
+        ticker.remove();
+        return;
+      }
+
+      const itemsHtml = posts.map(function (post) {
+        const title = escapeTickerHtml(post.title || "Campaign Update");
+        const type = escapeTickerHtml(getTickerTypeLabel(post.type));
+        const image = post.featured_image
+          ? escapeTickerHtml(post.featured_image)
+          : "assets/images/party-logo-ndc.jpg";
+
+        const link = post.type === "event" ? "events.html" : "news-media.html";
+
+        return `
+          <a class="ticker-item" href="${link}" title="${title}">
+            <img src="${image}" alt="${title}" loading="lazy" onerror="this.src='assets/images/party-logo-ndc.jpg'">
+            <span class="ticker-text">
+              <span class="ticker-title">${title}</span>
+              <span class="ticker-type">${type}</span>
+            </span>
+          </a>
+        `;
+      }).join("");
+
+      tickerInner.innerHTML = `
+        <span class="ticker-label">Latest</span>
+        ${itemsHtml}
+      `;
+    })
+    .catch(function () {
+      ticker.remove();
+    });
+
+  function getTickerTypeLabel(type) {
+    if (type === "event") return "Event";
+    if (type === "article") return "Article";
+    if (type === "press") return "Press";
+    if (type === "speech") return "Speech";
+    if (type === "photo") return "Gallery";
+    if (type === "video") return "Video";
+    return "News";
+  }
+
+  function escapeTickerHtml(value) {
+    return String(value)
+      .replaceAll("&", "&amp;")
+      .replaceAll("<", "&lt;")
+      .replaceAll(">", "&gt;")
+      .replaceAll('"', "&quot;")
+      .replaceAll("'", "&#039;");
+  }
+});
